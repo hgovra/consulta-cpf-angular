@@ -1,0 +1,21 @@
+<section class="recipiente">
+  <header class="recipiente__cabecalho">
+    <div class="recipiente__cabecalho-conteudo">
+      <h1 class="recipiente__titulo">
+        {{ titulo() }}
+      </h1>
+
+      @if (breadcrumb()) {
+        <span class="recipiente__breadcrumb">
+          {{ breadcrumb() }}
+        </span>
+      }
+    </div>
+  </header>
+
+  <div class="recipiente__conteudo">
+    <div class="recipiente__area">
+      <ng-content />
+    </div>
+  </div>
+</section>
