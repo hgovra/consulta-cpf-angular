@@ -1,0 +1,26 @@
+<aside class="sidebar" [class.sidebar--collapsed]="colapsado()">
+  <!-- Logotipo -->
+  <div class="sidebar__logo">
+    <img src="/images/logo.svg" alt="Ailos" />
+  </div>
+
+  <!-- Abrir/Fechar -->
+  <button class="sidebar__toggle" (click)="abrirFechar()">
+    <ui-icon nome="menu" [tamanho]="30"></ui-icon>
+
+    <span class="sidebar__label"> Menu </span>
+  </button>
+
+  <!-- Itens do Menu -->
+  <nav class="sidebar__nav">
+    @for (item of itens; track item.rotulo) {
+      <button class="sidebar__item">
+        <ui-icon [nome]="item.icone" [tamanho]="30"></ui-icon>
+
+        <span class="sidebar__label">
+          {{ item.rotulo }}
+        </span>
+      </button>
+    }
+  </nav>
+</aside>

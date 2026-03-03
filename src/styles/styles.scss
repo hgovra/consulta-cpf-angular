@@ -1,0 +1,9 @@
+@use "reset";
+@use "tokens";
+@use "typography";
+@use "mixins";
+
+body {
+  background-color: var(--color-background);
+  margin: 0;
+}
