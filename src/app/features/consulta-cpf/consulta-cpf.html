@@ -4,12 +4,14 @@
 >
   <passos [listaPassos]="listaPassos" [passoAtual]="passoAtual"></passos>
 
-  <form [formGroup]="formulario">
+  <form [formGroup]="formulario" class="consulta-cpf-form">
     <campo
       rotulo="CPF"
       placeholder="000.000.000-00"
       formControlName="cpf"
       [mensagemErro]="mensagemCpf()"
     />
+
+    <botao texto="Consultar por CPF" [desabilitado]="formulario.invalid" />
   </form>
 </recipiente>
