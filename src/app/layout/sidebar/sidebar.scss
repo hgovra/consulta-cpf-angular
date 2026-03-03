@@ -1,82 +1,68 @@
-@use "../../../styles/mixins";
-
 .sidebar {
-  width: 220px;
+  width: 14rem;
   min-height: 100vh;
-  background-color: var(--color-primary);
-  color: #fff;
+  background-color: oklch(35% 0.08 220);
+  color: oklch(98% 0.01 250);
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: width 0.35s ease;
+  transition: width 0.25s ease;
 
-  &--collapsed {
-    width: 100px;
+  &--colapsado {
+    width: 4.5rem;
 
-    .sidebar__item {
-      gap: 0;
-
-      .sidebar__label {
-        pointer-events: none;
-        width: 0;
-      }
+    .sidebar__rotulo {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
   &__logo {
-    padding: var(--spacing-5) 0;
+    padding: 2rem 0;
 
     img {
-      width: 60px;
+      width: 2.5rem;
     }
   }
 
-  &__toggle {
+  &__botao-toggle {
     background: none;
     border: none;
-    color: #fff;
-    margin-bottom: var(--spacing-5);
+    color: inherit;
+    margin-bottom: 2rem;
     cursor: pointer;
-    @include mixins.fonte-exo-2;
-    font-size: 1rem;
-    font-weight: 700;
   }
 
-  &__nav {
+  &__navegacao {
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
     align-items: center;
   }
 
   &__item {
     width: 100%;
-    background: transparent;
-    border: none;
-    color: inherit;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: var(--spacing-3);
-    padding: var(--spacing-3) var(--spacing-4);
-    cursor: pointer;
-    transition: 0.3s ease;
-    font-family: "Exo 2", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.2s ease;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: oklch(45% 0.08 220);
+    }
+
+    &--ativo {
+      background-color: oklch(60% 0.12 220);
+      color: oklch(98% 0.01 250);
     }
   }
 
-  &__label {
-    display: inline-block;
-    overflow: hidden;
+  &__rotulo {
     white-space: nowrap;
-    transition: 0.3s ease;
-    width: 100px;
-    text-align: left;
+    transition: opacity 0.2s ease;
   }
 }

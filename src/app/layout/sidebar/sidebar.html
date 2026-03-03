@@ -1,26 +1,23 @@
-<aside class="sidebar" [class.sidebar--collapsed]="colapsado()">
-  <!-- Logotipo -->
+<aside class="sidebar" [class.sidebar--colapsado]="menuColapsado()">
   <div class="sidebar__logo">
-    <img src="/images/logo.svg" alt="Ailos" />
+    <img src="/images/logo.svg" alt="Logo" />
   </div>
 
-  <!-- Abrir/Fechar -->
-  <button class="sidebar__toggle" (click)="abrirFechar()">
+  <button class="sidebar__botao-toggle" (click)="alternarMenu()" aria-label="Alternar menu">
     <ui-icon nome="menu" [tamanho]="30"></ui-icon>
-
-    <span class="sidebar__label"> Menu </span>
   </button>
 
-  <!-- Itens do Menu -->
-  <nav class="sidebar__nav">
-    @for (item of itens; track item.rotulo) {
-      <button class="sidebar__item">
+  <nav class="sidebar__navegacao">
+    @for (item of itensMenu; track item.rota) {
+      <a class="sidebar__item" [routerLink]="[item.rota]" routerLinkActive="sidebar__item--ativo">
         <ui-icon [nome]="item.icone" [tamanho]="30"></ui-icon>
 
-        <span class="sidebar__label">
-          {{ item.rotulo }}
-        </span>
-      </button>
+        @if (!menuColapsado()) {
+          <span class="sidebar__rotulo">
+            {{ item.rotulo }}
+          </span>
+        }
+      </a>
     }
   </nav>
 </aside>

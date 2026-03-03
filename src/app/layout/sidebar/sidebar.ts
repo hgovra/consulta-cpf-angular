@@ -1,33 +1,34 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Icon } from '../../shared/ui/icon/icon';
 import { Icone } from '../../shared/ui/icon/icons.registry';
 
-interface IconeSidebar {
+interface ItemMenu {
   icone: Icone;
   rotulo: string;
-  rota?: string;
+  rota: string;
 }
 
 @Component({
   selector: 'sidebar',
   standalone: true,
-  imports: [Icon],
+  imports: [Icon, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })
 export class Sidebar {
 
-  colapsado = signal(true);
+  menuColapsado = signal(true);
 
-  itens: IconeSidebar[] = [
-    { icone: 'busca', rotulo: 'Consultar CPF' },
-    { icone: 'favoritos', rotulo: 'Favoritos' },
-    { icone: 'chat', rotulo: 'Mensagens' },
-    { icone: 'categorias', rotulo: 'Configurações' },
-    { icone: 'central', rotulo: 'Institucional' }
+  itensMenu: ItemMenu[] = [
+    { icone: 'busca', rotulo: 'Consultar CPF', rota: '/' },
+    { icone: 'favoritos', rotulo: 'Favoritos', rota: 'favoritos' },
+    { icone: 'chat', rotulo: 'Mensagens', rota: '/mensagens' },
+    { icone: 'categorias', rotulo: 'Configuracoes', rota: '/configuracoes' },
+    { icone: 'central', rotulo: 'Institucional', rota: '/institucional' }
   ];
 
-  abrirFechar() {
-    this.colapsado.update(v => !v);
+  alternarMenu() {
+    this.menuColapsado.update(valor => !valor);
   }
 }
