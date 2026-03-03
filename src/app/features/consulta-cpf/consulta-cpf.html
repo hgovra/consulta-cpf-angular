@@ -7,11 +7,16 @@
   <form [formGroup]="formulario" class="consulta-cpf-form">
     <campo
       rotulo="CPF"
+      mascaraCpf
       placeholder="000.000.000-00"
       formControlName="cpf"
       [mensagemErro]="mensagemCpf()"
     />
 
-    <botao texto="Consultar por CPF" [desabilitado]="formulario.invalid" />
+    <botao
+      texto="Consultar por CPF"
+      [desabilitado]="formulario.invalid"
+      (click)="consultarPorCpf()"
+    />
   </form>
 </recipiente>

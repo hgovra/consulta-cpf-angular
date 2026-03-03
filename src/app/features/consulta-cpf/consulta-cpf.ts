@@ -1,13 +1,16 @@
 import { Component, computed } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
 import { Recipiente } from "../../layout/recipiente/recipiente";
+import { MascaraCpf } from '../../shared/directives/mascara-cpf';
 import { Botao } from "../../shared/ui/botao/botao";
 import { Campo } from '../../shared/ui/campo/campo';
 import { Passos } from "../../shared/ui/passos/passos";
+import { validarCpf } from '../../shared/validators/cpf';
 
 @Component({
   selector: 'app-consulta-cpf',
-  imports: [ReactiveFormsModule, Recipiente, Passos, Campo, Botao],
+  imports: [ReactiveFormsModule, Recipiente, Passos, Campo, Botao, MascaraCpf],
   templateUrl: './consulta-cpf.html',
   styleUrl: './consulta-cpf.scss',
 })
@@ -18,7 +21,7 @@ export class ConsultaCpf {
   private fb = new FormBuilder();
 
   formulario = this.fb.group({
-    cpf: ['', [Validators.required]]
+    cpf: ['', [Validators.required, validarCpf()]]
   });
 
   mensagemCpf = computed(() => {
@@ -35,4 +38,8 @@ export class ConsultaCpf {
 
     return null;
   });
+
+  consultarPorCpf() {
+    console.log(this.formulario.value);
+  }
 }

@@ -9,8 +9,6 @@
     [type]="tipo()"
     [placeholder]="placeholder() ?? ''"
     [disabled]="desabilitado()"
-    (input)="atualizarValor($event)"
-    (blur)="marcarComoTocado()"
   />
 
   @if (mensagemErro()) {

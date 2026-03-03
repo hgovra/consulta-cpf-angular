@@ -33,15 +33,13 @@ export class Campo implements ControlValueAccessor {
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
-  writeValue(valor: string): void {
-    this.valorInterno.set(valor ?? '');
-  }
+  writeValue(valor: string) {}
 
-  registerOnChange(fn: (value: string) => void): void {
+  registerOnChange(fn: (value: string) => void) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void): void {
+  registerOnTouched(fn: () => void) {
     this.onTouched = fn;
   }
 
