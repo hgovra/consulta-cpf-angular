@@ -1,0 +1,13 @@
+<nav class="passos">
+  <div class="passos__linha"></div>
+
+  @for (passo of listaPassos(); let i = $index; track i) {
+    <div class="passos__item">
+      <div class="passos__circulo" [class.passos__circulo--ativo]="i === indiceAtual()"></div>
+
+      <span class="passos__rotulo" [class.passos__rotulo--ativo]="i === indiceAtual()">
+        {{ passo }}
+      </span>
+    </div>
+  }
+</nav>

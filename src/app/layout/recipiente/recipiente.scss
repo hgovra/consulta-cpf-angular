@@ -4,8 +4,8 @@
   min-height: 100vh;
 
   &__cabecalho {
-    background-color: oklch(98% 0.01 250);
-    padding: 1.5rem 2rem;
+    background-color: oklch(1 0 0);
+    padding: 1rem 1.5rem;
     border-bottom: 0.0625rem solid oklch(90% 0.02 250);
   }
 
@@ -16,6 +16,7 @@
   &__titulo {
     font-family: "Exo 2", sans-serif;
     font-size: 1.5rem;
+    text-transform: uppercase;
     margin: 0;
     color: oklch(30% 0.04 250);
   }
@@ -29,8 +30,8 @@
 
   &__conteudo {
     flex: 1;
-    background-color: oklch(92% 0.03 220);
-    padding: 3rem 2rem;
+    background-color: oklch(0.9447 0.0085 225.08);
+    padding: 1rem 1.5rem;
   }
 
   &__area {
