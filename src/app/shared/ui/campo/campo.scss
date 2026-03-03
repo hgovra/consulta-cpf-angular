@@ -1,0 +1,56 @@
+:host {
+  display: inline-block;
+
+  .campo {
+    display: flex;
+    flex-direction: column;
+    width: 16.875rem;
+
+    &__rotulo {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: oklch(30% 0.04 250);
+      margin-bottom: 0.25rem;
+    }
+
+    &__controle {
+      padding: 0.625rem;
+      font-size: 0.875rem;
+      border: 0.0625rem solid oklch(80% 0.02 240);
+      border-radius: 0.125rem;
+      font-family: "Open Sans", sans-serif;
+      background-color: oklch(98% 0.01 250);
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: oklch(55% 0.12 240);
+        box-shadow: 0 0 0 0.125rem oklch(55% 0.12 240 / 0.2);
+      }
+
+      &:disabled {
+        background-color: oklch(94% 0.01 250);
+        cursor: not-allowed;
+      }
+
+      &--erro {
+        border-color: oklch(60% 0.2 25);
+
+        &:focus {
+          border-color: oklch(60% 0.2 25);
+          box-shadow: 0 0 0 0.125rem oklch(60% 0.2 25 / 0.25);
+        }
+      }
+    }
+
+    &__mensagem-erro {
+      font-family: "Exo 2", sans-serif;
+      font-size: 0.725rem;
+      color: oklch(60% 0.2 25);
+      margin-top: 0.35rem;
+    }
+  }
+}
