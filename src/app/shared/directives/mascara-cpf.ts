@@ -1,62 +1,78 @@
 import {
-  DestroyRef,
   Directive,
   ElementRef,
-  afterNextRender,
+  forwardRef,
   inject
 } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR
+} from '@angular/forms';
 
 @Directive({
-  selector: '[mascaraCpf]'
-})
-export class MascaraCpf {
-
-  private elemento = inject(ElementRef<HTMLElement>);
-  private destroyRef = inject(DestroyRef);
-  private ngControl = inject(NgControl, { optional: true });
-
-  private input!: HTMLInputElement;
-  private atualizando = false;
-
-  constructor() {
-    afterNextRender(() => {
-      this.resolverInput();
-      this.registrarListener();
-    });
+  selector: '[mascaraCpf]',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MascaraCpf),
+      multi: true
+    }
+  ],
+  host: {
+    '(input)': 'aoDigitar()',
+    '(blur)': 'aoSair()'
   }
+})
+export class MascaraCpf implements ControlValueAccessor {
 
-  private resolverInput() {
+  private elemento = inject(ElementRef<HTMLInputElement>);
+
+  private onChange: (valor: string) => void = () => {};
+  private onTouched: () => void = () => {};
+
+  private desabilitado = false;
+
+  private get input(): HTMLInputElement {
     const host = this.elemento.nativeElement;
 
     if (host instanceof HTMLInputElement) {
-      this.input = host;
-      return;
+      return host;
     }
 
     const inputInterno = host.querySelector('input');
 
     if (!inputInterno) {
       throw new Error(
-        'mascaraCpf precisa estar em um input ou componente que contenha um input.'
+        'A máscara de CPF precisa estar em um input ou componente que contenha um input.'
       );
     }
 
-    this.input = inputInterno;
+    return inputInterno;
   }
 
-  private registrarListener() {
-    const listener = () => this.aplicarMascara();
+  writeValue(valor: string | null): void {
+    const numeros = (valor ?? '')
+      .replace(/\D/g, '')
+      .slice(0, 11);
 
-    this.input.addEventListener('input', listener);
-
-    this.destroyRef.onDestroy(() => {
-      this.input.removeEventListener('input', listener);
-    });
+    this.input.value = this.formatarCpf(numeros);
   }
 
-  private aplicarMascara() {
-    if (this.atualizando) return;
+  registerOnChange(fn: (valor: string) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(disabled: boolean): void {
+    this.desabilitado = disabled;
+    this.input.disabled = disabled;
+  }
+
+  aoDigitar() {
+    if (this.desabilitado) return;
 
     const valorVisual = this.input.value;
 
@@ -66,24 +82,16 @@ export class MascaraCpf {
 
     const valorFormatado = this.formatarCpf(apenasNumeros);
 
-    this.atualizando = true;
-
-    // Atualiza visual
-
     this.input.value = valorFormatado;
 
-    // Atualiza FormControl com valor limpo
-
-    if (this.ngControl?.control) {
-      this.ngControl.control.setValue(apenasNumeros, {
-        emitEvent: false
-      });
-    }
-
-    this.atualizando = false;
+    this.onChange(apenasNumeros);
   }
 
-  private formatarCpf(valor: string): string {
+  aoSair() {
+    this.onTouched();
+  }
+
+  private formatarCpf(valor: string) {
     if (valor.length <= 3) return valor;
 
     if (valor.length <= 6)
