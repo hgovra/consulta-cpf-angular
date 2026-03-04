@@ -6,8 +6,8 @@
   font-size: 0.875rem;
   font-weight: 600;
   font-family: "Open Sans", sans-serif;
-  color: oklch(98% 0.01 250);
-  background-color: oklch(45% 0.1 220);
+  color: var(--cor-branco);
+  background-color: var(--cor-primaria);
   white-space: nowrap;
   cursor: pointer;
   transition:
@@ -15,7 +15,7 @@
     transform 0.05s ease;
 
   &:hover:not(:disabled) {
-    background-color: oklch(35% 0.1 220);
+    background-color: var(--cor-primaria-escura);
   }
 
   &:active:not(:disabled) {
@@ -23,30 +23,43 @@
   }
 
   &:disabled {
-    background-color: oklch(75% 0.02 240);
+    background-color: var(--cor-desabilitado);
     cursor: not-allowed;
 
     &.processando {
-      background-color: oklch(45% 0.1 220);
+      background-color: var(--cor-primaria);
     }
   }
 
   &.contorno {
     background-color: transparent;
-    border: 0.125rem solid oklch(45% 0.1 220);
-    color: oklch(45% 0.1 220);
+    border: 0.125rem solid var(--cor-primaria);
+    color: var(--cor-primaria);
 
     &:hover:not(:disabled) {
-      background-color: oklch(65% 0.1 220);
-      border: 0.125rem solid oklch(65% 0.1 220);
+      background-color: var(--cor-primaria-clara);
+      border: 0.125rem solid var(--cor-primaria-clara);
       color: oklch(98% 0.01 250);
     }
   }
 
+  &.link {
+    background-color: transparent;
+    color: var(--cor-primaria);
+    padding: 0.525rem 0;
+    border: 0;
+    width: auto;
+
+    &:hover:not(:disabled) {
+      background-color: transparent;
+      color: var(--cor-primaria-escura);
+    }
+  }
+
   .processando {
-    color: oklch(1 0 0);
+    color: var(--cor-branco);
     font-size: 0.18rem;
-    width: 1.045em;
+    width: 1.04em;
     height: 1em;
     border-radius: 50%;
     position: relative;

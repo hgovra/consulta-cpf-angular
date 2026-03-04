@@ -8,7 +8,7 @@
   min-height: 100vh;
   box-sizing: border-box;
   background-color: oklch(0.4492 0.0851 234.4);
-  color: oklch(98% 0.01 250);
+  color: var(--cor-branco);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@
     left: 0;
     right: 0;
     text-align: center;
-    padding: 1rem 0;
+    padding: var(--espaco) 0;
     opacity: 1;
     transition: opacity 0.5s ease;
 
@@ -62,7 +62,7 @@
     background: none;
     border: none;
     color: inherit;
-    padding: 0.5rem 1.25rem;
+    padding: var(--meio-espaco) 1.25rem;
     z-index: 100;
     cursor: pointer;
   }
@@ -79,18 +79,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1.25rem;
+    padding: var(--meio-espaco) 1.25rem;
     color: inherit;
     text-decoration: none;
     transition: background 0.2s ease;
 
     &:hover {
-      background-color: oklch(35% 0.1 220);
+      background-color: var(--cor-primaria-escura);
     }
 
     &--ativo {
-      background-color: oklch(60% 0.12 220);
-      color: oklch(98% 0.01 250);
+      background-color: var(--cor-primaria-clara);
+      color: var(--cor-branco);
     }
   }
 
@@ -101,7 +101,7 @@
     white-space: nowrap;
     overflow: hidden;
     box-sizing: border-box;
-    padding-left: 1rem;
+    padding-left: var(--espaco);
     width: 9rem;
     display: inline-block;
     transition: 0.2s ease;

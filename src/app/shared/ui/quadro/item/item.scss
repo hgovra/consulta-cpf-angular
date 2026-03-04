@@ -1,12 +1,12 @@
 .item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--espaco);
 
   &__icone {
-    width: 2rem;
-    height: 2rem;
-    color: oklch(0.5727 0 0);
+    width: var(--espaco-duplo);
+    height: var(--espaco-duplo);
+    color: var(--cor-texto-mutado);
   }
 
   &__texto {
@@ -16,12 +16,12 @@
 
   &__rotulo {
     font-size: 0.675rem;
-    color: oklch(0.5727 0 0);
+    color: var(--cor-texto-mutado);
   }
 
   &__valor {
     font-size: 0.875rem;
-    color: oklch(0.1596 0.0208 226.19);
+    color: var(--cor-titulo);
     width: 11.25rem;
     display: inline-block;
     overflow: hidden;

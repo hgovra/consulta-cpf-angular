@@ -4,8 +4,8 @@
   &__form {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: var(--espaco);
+    margin-top: var(--espaco);
 
     .btn-consultar-por-cpf {
       margin-top: 1.5rem;
@@ -18,8 +18,8 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: var(--espaco);
+    margin-top: var(--espaco);
   }
 
   &__rodape {
@@ -27,11 +27,11 @@
     bottom: 0;
     left: 6.25rem;
     right: 0;
-    background-color: oklch(1 0 0);
-    padding: 1rem 1.5rem;
+    background-color: var(--cor-branco);
+    padding: var(--espaco) 1.5rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: var(--espaco);
   }
 }

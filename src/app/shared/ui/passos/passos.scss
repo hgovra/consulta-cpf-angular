@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
+  padding: var(--espaco) 0;
 
   .passos {
     display: inline-flex;
@@ -20,27 +20,27 @@
     }
 
     &__circulo {
-      width: 1rem;
-      height: 1rem;
+      width: var(--espaco);
+      height: var(--espaco);
       border-radius: 50%;
-      background-color: oklch(80% 0.02 240);
-      border: 0.125rem solid oklch(80% 0.02 240);
+      background-color: var(--cor-desabilitado);
+      border: 0.125rem solid var(--cor-desabilitado);
       transition: background-color 0.2s ease;
 
       &--ativo {
-        background-color: oklch(0.9447 0.0085 225.08);
-        border-color: oklch(55% 0.12 240);
+        background-color: var(--cor-fundo);
+        border-color: var(--cor-primaria);
       }
     }
 
     &__rotulo {
       margin-top: 0.875rem;
       font-size: 0.875rem;
-      color: oklch(55% 0.02 240);
+      color: var(--cor-desabilitado);
       white-space: nowrap;
 
       &--ativo {
-        color: oklch(35% 0.06 240);
+        color: var(--cor-primaria);
         font-weight: 600;
       }
     }
@@ -49,10 +49,10 @@
       width: auto;
       height: 0.125rem;
       position: absolute;
-      background-color: oklch(80% 0.02 240);
+      background-color: var(--cor-desabilitado);
       left: 4.375rem;
       right: 4.375rem;
-      top: 0.5rem;
+      top: var(--meio-espaco);
     }
   }
 }
