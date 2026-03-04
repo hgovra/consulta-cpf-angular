@@ -45,10 +45,15 @@
 
     &.compacto {
       opacity: 0;
+
+      img {
+        height: 3.75rem;
+        width: auto;
+      }
     }
 
     img {
-      height: 3.75rem;
+      height: 4.75rem;
       width: auto;
     }
   }
@@ -58,6 +63,7 @@
     border: none;
     color: inherit;
     padding: 0.5rem 1.25rem;
+    z-index: 100;
     cursor: pointer;
   }
 
