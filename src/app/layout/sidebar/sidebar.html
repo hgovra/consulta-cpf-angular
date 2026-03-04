@@ -1,22 +1,29 @@
-<aside class="sidebar" [class.sidebar--colapsado]="menuColapsado()">
-  <div class="sidebar__logo">
-    <img src="/images/logo.svg" alt="Logo" />
+<aside class="sidebar" [class.sidebar--escondido]="menuEscondido()">
+  <div class="sidebar__logo normal">
+    <img src="/images/logo.svg" alt="Ailos" />
+  </div>
+
+  <div class="sidebar__logo compacto">
+    <img src="/images/logo-compacto.svg" alt="Ailos" />
   </div>
 
   <button class="sidebar__botao-toggle" (click)="alternarMenu()" aria-label="Alternar menu">
-    <ui-icon nome="menu" [tamanho]="30"></ui-icon>
+    <icone nome="menu" [tamanho]="30" cor="oklch(1 0 0)" />
   </button>
 
   <nav class="sidebar__navegacao">
     @for (item of itensMenu; track item.rota) {
-      <a class="sidebar__item" [routerLink]="[item.rota]" routerLinkActive="sidebar__item--ativo">
-        <ui-icon [nome]="item.icone" [tamanho]="30"></ui-icon>
+      <a
+        class="sidebar__item"
+        [routerLink]="[item.rota]"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="sidebar__item--ativo"
+      >
+        <icone [nome]="item.icone" [tamanho]="30" cor="oklch(1 0 0)" />
 
-        @if (!menuColapsado()) {
-          <span class="sidebar__rotulo">
-            {{ item.rotulo }}
-          </span>
-        }
+        <span class="sidebar__rotulo">
+          {{ item.rotulo }}
+        </span>
       </a>
     }
   </nav>

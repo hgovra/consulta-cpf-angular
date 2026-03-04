@@ -1,5 +1,4 @@
 .consulta-cpf {
-  position: relative;
   padding-bottom: 4.5rem;
 
   &__form {
@@ -24,9 +23,9 @@
   }
 
   &__rodape {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    left: 0;
+    left: 6.25rem;
     right: 0;
     background-color: oklch(1 0 0);
     padding: 1rem 1.5rem;

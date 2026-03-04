@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Icon } from '../../shared/ui/icon/icon';
-import { Icone } from '../../shared/ui/icon/icons.registry';
+import { Icone } from "../../shared/ui/icone/icone";
+import { NomeIcone } from '../../shared/ui/icone/registro.icones';
 
 interface ItemMenu {
-  icone: Icone;
+  icone: NomeIcone;
   rotulo: string;
   rota: string;
 }
@@ -12,13 +12,13 @@ interface ItemMenu {
 @Component({
   selector: 'sidebar',
   standalone: true,
-  imports: [Icon, RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, Icone],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss'
 })
 export class Sidebar {
 
-  menuColapsado = signal(true);
+  menuEscondido = signal(true);
 
   itensMenu: ItemMenu[] = [
     { icone: 'busca', rotulo: 'Consultar CPF', rota: '/' },
@@ -29,6 +29,6 @@ export class Sidebar {
   ];
 
   alternarMenu() {
-    this.menuColapsado.update(valor => !valor);
+    this.menuEscondido.update(valor => !valor);
   }
 }

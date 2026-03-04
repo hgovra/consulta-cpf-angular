@@ -27,14 +27,15 @@ export class CpfService {
         }
       ]
     },
-    {
-      cpf: '65470783022',
-      nome: 'João Silva Matos',
-    }
   ];
 
+  private mockNovoCooperado: Cooperado = {
+    cpf: '65470783022',
+    nome: 'João Silva Matos',
+  };
+
   buscarCpf(cpf: string): Observable<Cooperado | null> {
-    const resultado = this.mockBancoDados.find(c => c.cpf === cpf) ?? null;
+    const resultado = this.mockBancoDados.find(c => c.cpf === cpf) ?? this.mockNovoCooperado;
 
     return of(resultado).pipe(
       delay(1000)
