@@ -1,0 +1,17 @@
+<section class="quadro">
+  <header class="quadro__header">
+    <h2 class="quadro__titulo">
+      {{ titulo() }}
+    </h2>
+
+    @if (subtitulo()) {
+      <span class="quadro__subtitulo">
+        {{ subtitulo() }}
+      </span>
+    }
+  </header>
+
+  <div class="quadro__conteudo">
+    <ng-content />
+  </div>
+</section>

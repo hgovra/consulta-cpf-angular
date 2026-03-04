@@ -11,21 +11,21 @@ export class CpfService {
 
   private mockDatabase: Cooperado[] = [
     {
-      cpf: '11122233344',
+      cpf: '83782513061',
       nome: 'Mariane de Sousa Oliveira',
       status: 'Regular'
     }
   ];
 
-  findByCpf(cpf: string): Observable<Cooperado | null> {
-    const result = this.mockDatabase.find(c => c.cpf === cpf) ?? null;
+  buscarCpf(cpf: string): Observable<Cooperado | null> {
+    const resultado = this.mockDatabase.find(c => c.cpf === cpf) ?? null;
 
-    return of(result).pipe(
+    return of(resultado).pipe(
       delay(1000)
     );
   }
 
-  setCooperado(cooperado: Cooperado | null) {
+  definirCooperado(cooperado: Cooperado | null) {
     this._cooperado.set(cooperado);
   }
 

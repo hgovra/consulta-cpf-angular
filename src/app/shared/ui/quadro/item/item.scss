@@ -1,0 +1,31 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__icone {
+    width: 2rem;
+    height: 2rem;
+    color: oklch(0.5727 0 0);
+  }
+
+  &__texto {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__rotulo {
+    font-size: 0.675rem;
+    color: oklch(0.5727 0 0);
+  }
+
+  &__valor {
+    font-size: 0.875rem;
+    color: oklch(0.1596 0.0208 226.19);
+    width: 11.25rem;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
