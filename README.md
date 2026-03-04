@@ -5,37 +5,75 @@
 ![Tests](https://img.shields.io/badge/tests-Vitest-green?logo=vitest)
 ![Coverage](https://img.shields.io/badge/coverage-90%25+-brightgreen)
 
-Projeto Angular moderno que implementa uma tela de **consulta de CPF**,
+Projeto Angular que implementa uma tela de **consulta de CPF**,
 com validação, máscara de input, consulta simulada e exibição de dados
 de cooperado.
 
-O objetivo principal é demonstrar **boas práticas de arquitetura Angular
-moderna** e **testes unitários com alto retorno sobre investimento
-(ROI)**.
+Desenvolvido como teste prático para **Ailos** e **PremierSoft**.
 
-------------------------------------------------------------------------
+---
 
 # Stack
 
 Angular moderno com:
 
--   Signals
--   input() signals
--   ControlValueAccessor
--   ValidatorFn
--   Reactive Forms
+- Signals
+- Control Flow
+- Reactive Forms
+
+Estilos:
+
+- SASS
 
 Testes:
 
--   Vitest
--   Angular TestBed
+- Vitest
 
-------------------------------------------------------------------------
+---
 
-# Estratégia de testes (resumida)
+# Executar o projeto
 
-A estratégia prioriza **alto ROI**.\
-Testamos principalmente **lógica e regras de negócio**, evitando
+Clonar o repositório:
+
+    git clone https://github.com/hgovra/consulta-cpf-angular.git
+
+Entrar no diretório:
+
+    cd consulta-cpf-angular
+
+Instalar dependências:
+
+    npm install
+
+Rodar aplicação:
+
+    ng serve
+
+---
+
+# Navegação
+
+Após rodar o projeto, acesse:
+
+http://localhost:4200
+
+- Preencha o CPF com 11 dígitos.
+- Clique em "Consultar por CPF".
+- Utilize o CPF 837.825.130-61 para ver os dados do cooperado previamente admitido ou digite qualquer outro CPF válido para simular o cadastro de um novo cooperado.
+- O menu lateral abre ao clicar no primeiro ícone (hambúrger) no canto superior esquerdo.
+
+---
+
+# Executar testes
+
+    ng test
+
+---
+
+# Estratégia
+
+Os testes priorizam **alto ROI**.\
+Testei principalmente **lógica e regras de negócio**, evitando
 over-testing de elementos visuais.
 
 ### Testado
@@ -55,53 +93,7 @@ ControlValueAccessor
 
 Para evitar baixo ROI, não testamos:
 
--   HTML trivial
--   CSS
--   Angular internals
--   componentes puramente visuais (ex: `campo`)
-
-Cobertura aproximada:
-
--   Statements: \~90--95%
--   Branches: \~85--90%
--   Functions: \~100%
-
-------------------------------------------------------------------------
-
-# Convenções
-
-### Testes
-
-Mensagens dos testes são escritas em **Português**.
-
-Exemplo:
-
-    it('deve retornar cooperado quando o CPF existir')
-
-### Commits
-
-Formato:
-
-    tipo: descrição em português
-
-Exemplo:
-
-    test: adiciona testes unitários para CpfService
-
-------------------------------------------------------------------------
-
-# Executar o projeto
-
-Instalar dependências:
-
-    npm install
-
-Rodar aplicação:
-
-    npm run start
-
-------------------------------------------------------------------------
-
-# Executar testes
-
-    npm run test
+- HTML trivial
+- CSS
+- Angular internals
+- componentes puramente visuais (ex: `campo`)
