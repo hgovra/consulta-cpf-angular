@@ -1,6 +1,5 @@
 import {
   Component,
-  computed,
   input,
   Optional,
   Self,
@@ -39,19 +38,19 @@ export class Campo implements ControlValueAccessor {
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
-  writeValue(valor: string): void {
+  writeValue(valor: string) {
     // this.valorInterno.set(valor ?? '');
   }
 
-  registerOnChange(fn: (value: string) => void): void {
+  registerOnChange(fn: (value: string) => void) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void): void {
+  registerOnTouched(fn: () => void) {
     this.onTouched = fn;
   }
 
-  setDisabledState(disabled: boolean): void {
+  setDisabledState(disabled: boolean) {
     this.desabilitado.set(disabled);
   }
 
@@ -66,14 +65,4 @@ export class Campo implements ControlValueAccessor {
   marcarComoTocado() {
     this.onTouched();
   }
-
-  erroVisivel = computed(() => {
-    const control = this.ngControl;
-
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched)
-    );
-  });
 }

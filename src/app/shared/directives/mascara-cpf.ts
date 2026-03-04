@@ -69,9 +69,11 @@ export class MascaraCpf {
     this.atualizando = true;
 
     // Atualiza visual
+
     this.input.value = valorFormatado;
 
     // Atualiza FormControl com valor limpo
+
     if (this.ngControl?.control) {
       this.ngControl.control.setValue(apenasNumeros, {
         emitEvent: false

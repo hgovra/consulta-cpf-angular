@@ -64,7 +64,9 @@
   }
 
   <footer class="consulta-cpf__rodape">
-    <botao texto="Iniciar nova admissão" (click)="iniciarNovaAdmissao()" />
+    @if (cpfService.cooperado()) {
+      <botao texto="Iniciar nova admissão" (click)="iniciarNovaAdmissao()" />
+    }
 
     <botao texto="Dicas para admissão" estilo="contorno" />
   </footer>

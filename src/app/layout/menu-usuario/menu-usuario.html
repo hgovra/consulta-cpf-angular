@@ -1,0 +1,23 @@
+<div class="menu-usuario">
+  <button class="menu-usuario__notificacoes">
+    <icone nome="notificacoes" [tamanho]="30" cor="var(--cor-primaria)" />
+
+    @if (notificacoes() > 0) {
+      <span class="menu-usuario__badge">
+        {{ notificacoes() }}
+      </span>
+    }
+  </button>
+
+  <button class="menu-usuario__instituicao">
+    {{ instituicao() }}
+  </button>
+
+  <div class="menu-usuario__perfil">
+    <img class="menu-usuario__avatar" [src]="avatarUrl()" alt="Foto do usuário" />
+
+    <div class="menu-usuario__config">
+      <icone nome="opcoes" [tamanho]="16" cor="var(--cor-primaria)" />
+    </div>
+  </div>
+</div>
