@@ -11,8 +11,6 @@ de cooperado.
 
 Desenvolvido como teste prático para **Ailos** e **PremierSoft**.
 
----
-
 # Stack
 
 Angular moderno com:
@@ -28,8 +26,6 @@ Estilos:
 Testes:
 
 - Vitest
-
----
 
 # Executar o projeto
 
@@ -49,8 +45,6 @@ Rodar aplicação:
 
     ng serve
 
----
-
 # Navegação
 
 Após rodar o projeto, acesse:
@@ -62,13 +56,9 @@ http://localhost:4200
 - Utilize o CPF 837.825.130-61 para ver os dados do cooperado previamente admitido ou digite qualquer outro CPF válido para simular o cadastro de um novo cooperado.
 - O menu lateral abre ao clicar no primeiro ícone (hambúrger) no canto superior esquerdo.
 
----
-
 # Executar testes
 
     ng test
-
----
 
 # Estratégia
 
@@ -91,7 +81,7 @@ ControlValueAccessor
 
 ### Não testado
 
-Para evitar baixo ROI, não testamos:
+Para evitar baixo ROI, não testei:
 
 - HTML trivial
 - CSS
