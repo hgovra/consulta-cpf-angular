@@ -1,10 +1,19 @@
 <recipiente
   [titulo]="'Nova Admissão Cooperado'"
   [breadcrumb]="'Cadastro / Admissão do Cooperado / Nova Admissão'"
+  class="consulta-cpf"
 >
   <passos [listaPassos]="listaPassos" [passoAtual]="passoAtual"></passos>
 
-  <form [formGroup]="formulario" class="consulta-cpf-form">
+  <h2>Informe o CPF do futuro cooperado (a)</h2>
+
+  <p>
+    Se necessário, você poderá duplicar uma conta existente ou pausar e retomar este cadastro
+    futuramente.<br />
+    Digite apenas os números (sem pontos ou traços).
+  </p>
+
+  <form [formGroup]="formulario" class="consulta-cpf__form">
     <campo
       rotulo="CPF"
       mascaraCpf
@@ -23,10 +32,40 @@
     />
   </form>
 
-  <quadro titulo="Situação cadastral do CPF" subtitulo="Consulta na Receita Federal">
-    <item icone="ok" rotulo="Nome" [texto]="'aaaaaaaaaaaaaaaa dddda ddddddcf'" estado="sucesso">
-    </item>
+  @if (!!cpfService.cooperado()) {
+    <section class="consulta-cpf__resultado">
+      <quadro
+        titulo="Situação cadastral do CPF"
+        subtitulo="Consulta na Receita Federal"
+        [atraso]="200"
+      >
+        <item icone="pessoa" rotulo="Nome" [texto]="cpfService.cooperado()!.nome"> </item>
 
-    <item icone="cartao" rotulo="Situação do CPF" [texto]="'ddddd'"> </item>
-  </quadro>
+        <item
+          [icone]="(cpfService.cooperado()?.status | iconeStatusCpf) ?? undefined"
+          rotulo="Situação do CPF"
+          [texto]="(cpfService.cooperado()?.status | titlecase) ?? undefined"
+          [estado]="cpfService.cooperado()?.status | statusCpf"
+        />
+      </quadro>
+
+      @for (conta of cpfService.cooperado()!.contas; let i = $index; track conta.numero) {
+        <quadro
+          [titulo]="conta.tipo | formatoTipoConta"
+          subtitulo="Cooperativa Viacredi"
+          [atraso]="500 * (i + 1)"
+        >
+          <item icone="cartao" rotulo="Número da conta" [texto]="conta.numero | formatoConta" />
+
+          <a class="botao-link" href="#">Duplicar conta</a>
+        </quadro>
+      }
+    </section>
+  }
+
+  <footer class="consulta-cpf__rodape">
+    <botao texto="Iniciar nova admissão" (click)="iniciarNovaAdmissao()" />
+
+    <botao texto="Dicas para admissão" estilo="contorno" />
+  </footer>
 </recipiente>

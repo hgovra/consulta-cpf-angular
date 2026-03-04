@@ -1,13 +1,15 @@
-<section class="quadro">
+<section class="quadro" [class.quadro--visivel]="visivel()">
   <header class="quadro__header">
-    <h2 class="quadro__titulo">
-      {{ titulo() }}
-    </h2>
+    @if (titulo()) {
+      <h2 class="quadro__titulo">
+        {{ titulo() }}
+      </h2>
+    }
 
     @if (subtitulo()) {
-      <span class="quadro__subtitulo">
+      <p class="quadro__subtitulo">
         {{ subtitulo() }}
-      </span>
+      </p>
     }
   </header>
 

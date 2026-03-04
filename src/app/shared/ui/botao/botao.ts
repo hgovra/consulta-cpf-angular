@@ -9,6 +9,7 @@ import { Component, input } from '@angular/core';
 export class Botao {
   texto = input.required<string>();
   tipo = input<'button' | 'submit'>('button');
+  estilo = input<'normal' | 'contorno'>('normal');
   processando = input<boolean>(false);
   desabilitado = input<boolean>(false);
 }

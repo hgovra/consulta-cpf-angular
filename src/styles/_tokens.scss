@@ -1,14 +1,15 @@
 :root {
   /* Colors */
-  --color-primary: #165c7d;
-  --color-primary-dark: #0f4a64;
+  --cor-primaria: oklch(0.4492 0.0851 234.4);
+  --cor-primaria-escura: oklch(35% 0.1 220);
   --cor-sucesso: #00c246;
   --cor-erro: #d32f2f;
   --cor-alerta: #ffa300;
   --color-border: #e5e7eb;
   --color-background: #f9fafb;
   --color-surface: #ffffff;
-  --cor-texto: #1f2937;
+  --cor-titulo: oklch(0.1804 0.0038 229.04);
+  --cor-texto: oklch(0.4522 0.0153 244.51);
   --cor-texto-mutado: #6b7280;
 
   /* Spacing */

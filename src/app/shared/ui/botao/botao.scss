@@ -1,13 +1,14 @@
 .botao {
-  padding: 0.625rem 1.5rem;
+  padding: 0.525rem 1.5rem;
   border-radius: 0.125rem;
-  border: none;
+  border: 0.125rem solid transparent;
   width: 100%;
   font-size: 0.875rem;
   font-weight: 600;
   font-family: "Open Sans", sans-serif;
   color: oklch(98% 0.01 250);
   background-color: oklch(45% 0.1 220);
+  white-space: nowrap;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
@@ -27,6 +28,18 @@
 
     &.processando {
       background-color: oklch(45% 0.1 220);
+    }
+  }
+
+  &.contorno {
+    background-color: transparent;
+    border: 0.125rem solid oklch(45% 0.1 220);
+    color: oklch(45% 0.1 220);
+
+    &:hover:not(:disabled) {
+      background-color: oklch(65% 0.1 220);
+      border: 0.125rem solid oklch(65% 0.1 220);
+      color: oklch(98% 0.01 250);
     }
   }
 

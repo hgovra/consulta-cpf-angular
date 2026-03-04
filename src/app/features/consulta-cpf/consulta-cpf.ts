@@ -1,10 +1,15 @@
+import { TitleCasePipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-
 import { finalize } from 'rxjs';
+
 import { CpfService } from '../../core/services/cpf';
 import { Recipiente } from "../../layout/recipiente/recipiente";
 import { MascaraCpf } from '../../shared/directives/mascara-cpf';
+import { FormatoContaPipe } from "../../shared/pipes/formato-conta-pipe";
+import { FormatoTipoContaPipe } from "../../shared/pipes/formato-tipo-conta-pipe";
+import { IconeStatusCpfPipe } from "../../shared/pipes/icone-status-cpf-pipe";
+import { StatusCpfPipe } from "../../shared/pipes/status-cpf-pipe";
 import { Botao } from "../../shared/ui/botao/botao";
 import { Campo } from '../../shared/ui/campo/campo';
 import { Passos } from "../../shared/ui/passos/passos";
@@ -14,7 +19,7 @@ import { validarCpf } from '../../shared/validators/cpf';
 
 @Component({
   selector: 'app-consulta-cpf',
-  imports: [ReactiveFormsModule, Recipiente, Passos, Campo, Botao, MascaraCpf, Quadro, Item],
+  imports: [ReactiveFormsModule, Recipiente, Passos, Campo, Botao, MascaraCpf, Quadro, Item, TitleCasePipe, FormatoContaPipe, FormatoTipoContaPipe, StatusCpfPipe, IconeStatusCpfPipe],
   templateUrl: './consulta-cpf.html',
   styleUrl: './consulta-cpf.scss',
 })
@@ -34,6 +39,8 @@ export class ConsultaCpf {
 
   processando = signal(false);
   erroConsulta = signal<string | null>(null);
+
+  cooperado = this.cpfService.cooperado();
 
   atualizarMensagemCpf() {
     const control = this.formulario.get('cpf');
@@ -59,17 +66,21 @@ export class ConsultaCpf {
       .subscribe({
         next: cooperado => {
           if (!cooperado) {
-            this.erroConsulta.set('CPF nao encontrado');
+            this.erroConsulta.set('CPF não encontrado');
             return;
           }
 
           this.cpfService.definirCooperado(cooperado);
-
-          // this.router.navigate(['cooperado']);
         },
         error: () => {
           this.erroConsulta.set('Erro ao consultar CPF');
         }
       });
+  }
+
+  iniciarNovaAdmissao() {
+    this.cpfService.limparCooperado();
+    this.formulario.reset();
+    this.erroConsulta.set(null);
   }
 }

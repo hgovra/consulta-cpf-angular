@@ -10,10 +10,10 @@ import { NomeIcone } from '../../icone/registro.icones';
   styleUrl: './item.scss',
 })
 export class Item {
-  icone = input.required<NomeIcone>();
+  icone = input<NomeIcone>();
   estado = input<'normal'| 'sucesso'| 'alerta'| 'erro'>('normal');
   rotulo = input.required<string>();
-  texto = input.required<string>();
+  texto = input<string>();
 
   cor = computed(() => {
     switch (this.estado()) {

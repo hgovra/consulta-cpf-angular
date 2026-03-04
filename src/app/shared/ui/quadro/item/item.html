@@ -1,6 +1,8 @@
 <div class="item">
   <div class="item__icone">
-    <icone [nome]="icone()" [tamanho]="32" [cor]="cor()" />
+    @if (icone()) {
+      <icone [nome]="icone()!" [tamanho]="32" [cor]="cor()" />
+    }
   </div>
 
   <div class="item__texto">
@@ -8,8 +10,12 @@
       {{ rotulo() }}
     </span>
 
-    <span class="item__valor">
-      {{ texto() }}
-    </span>
+    @if (texto()) {
+      <span class="item__valor">
+        {{ texto() }}
+      </span>
+    } @else {
+      <span class="item__valor nao-informado">Não informado</span>
+    }
   </div>
 </div>

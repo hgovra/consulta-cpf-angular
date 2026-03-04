@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, Observable, of } from 'rxjs';
+
 import { Cooperado } from '../models/cooperado';
 
 @Injectable({ providedIn: 'root' })
@@ -9,16 +9,32 @@ export class CpfService {
   private _cooperado = signal<Cooperado | null>(null);
   cooperado = this._cooperado.asReadonly();
 
-  private mockDatabase: Cooperado[] = [
+  // Simulando dados da API
+
+  private mockBancoDados: Cooperado[] = [
     {
       cpf: '83782513061',
       nome: 'Mariane de Sousa Oliveira',
-      status: 'Regular'
+      status: 'REGULAR',
+      contas: [
+        {
+          tipo: 'CORRENTE',
+          numero: '0235451'
+        },
+        {
+          tipo: 'APLICACAO',
+          numero: '3361290'
+        }
+      ]
+    },
+    {
+      cpf: '65470783022',
+      nome: 'João Silva Matos',
     }
   ];
 
   buscarCpf(cpf: string): Observable<Cooperado | null> {
-    const resultado = this.mockDatabase.find(c => c.cpf === cpf) ?? null;
+    const resultado = this.mockBancoDados.find(c => c.cpf === cpf) ?? null;
 
     return of(resultado).pipe(
       delay(1000)
@@ -29,7 +45,7 @@ export class CpfService {
     this._cooperado.set(cooperado);
   }
 
-  clear() {
+  limparCooperado() {
     this._cooperado.set(null);
   }
 }

@@ -1,6 +1,7 @@
 <button
   class="botao"
   [class.processando]="processando()"
+  [class.contorno]="estilo() === 'contorno'"
   [attr.type]="tipo()"
   [disabled]="desabilitado()"
 >

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { cpfFoundGuard } from './core/guards/cpf-found.guard';
 
 export const rotasAplicacao: Routes = [
   {
@@ -7,13 +6,6 @@ export const rotasAplicacao: Routes = [
     loadComponent: () =>
       import('./features/consulta-cpf/consulta-cpf')
         .then(m => m.ConsultaCpf)
-  },
-  {
-    path: 'cooperado',
-    canActivate: [cpfFoundGuard],
-    loadComponent: () =>
-      import('./features/cooperado/cooperado')
-        .then(m => m.Cooperado)
   },
   {
     path: 'favoritos',
