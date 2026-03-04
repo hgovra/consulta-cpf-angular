@@ -1,25 +1,20 @@
 import {
   Component,
-  forwardRef,
+  computed,
   input,
+  Optional,
+  Self,
   signal
 } from '@angular/core';
 import {
   ControlValueAccessor,
-  NG_VALUE_ACCESSOR
+  NgControl
 } from '@angular/forms';
 
 @Component({
   selector: 'campo',
   templateUrl: './campo.html',
   styleUrl: './campo.scss',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Campo),
-      multi: true
-    }
-  ]
 })
 export class Campo implements ControlValueAccessor {
   rotulo = input.required<string>();
@@ -27,19 +22,32 @@ export class Campo implements ControlValueAccessor {
   tipo = input<string>('text');
   mensagemErro = input<string | null>(null);
 
+  constructor(
+    // @Self() garante que injetamos o NgControl deste componente
+    // @Optional() evita erros se o componente não for usado em um formulário
+    @Self() @Optional() public ngControl: NgControl
+  ) {
+    if (this.ngControl) {
+      // Esta é a chave: atribuir a si mesmo como o valueAccessor
+      this.ngControl.valueAccessor = this;
+    }
+  }
+
   valorInterno = signal<string>('');
   desabilitado = signal(false);
 
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
 
-  writeValue(valor: string) {}
+  writeValue(valor: string): void {
+    // this.valorInterno.set(valor ?? '');
+  }
 
-  registerOnChange(fn: (value: string) => void) {
+  registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void) {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
@@ -58,4 +66,14 @@ export class Campo implements ControlValueAccessor {
   marcarComoTocado() {
     this.onTouched();
   }
+
+  erroVisivel = computed(() => {
+    const control = this.ngControl;
+
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched)
+    );
+  });
 }

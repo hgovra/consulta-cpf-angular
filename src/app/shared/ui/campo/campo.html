@@ -5,6 +5,7 @@
 
   <input
     class="campo__controle"
+    [class.campo__controle--erro]="!!mensagemErro()"
     [value]="valorInterno()"
     [type]="tipo()"
     [placeholder]="placeholder() ?? ''"

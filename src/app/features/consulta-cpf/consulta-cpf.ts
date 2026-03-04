@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Recipiente } from "../../layout/recipiente/recipiente";
@@ -24,22 +24,19 @@ export class ConsultaCpf {
     cpf: ['', [Validators.required, validarCpf()]]
   });
 
-  mensagemCpf = computed(() => {
+  mensagemCpf = signal<string | null>(null);
+
+  atualizarMensagemCpf() {
     const control = this.formulario.get('cpf');
 
-    if (control?.touched) {
-      if (!control || !control.errors) return null;
+    if (!control || !control.errors) this.mensagemCpf.set(null);
 
-      if (control.errors['required']) return 'Campo obrigatório';
-      if (control.errors['cpfInvalido']) return 'Informe um CPF válido';
+    if (control?.errors?.['required']) this.mensagemCpf.set('Campo obrigatório');
+    if (control?.errors?.['cpfInvalido']) this.mensagemCpf.set('Informe um CPF válido');
 
-      return 'Campo inválido';
-    }
-
-    return null;
-  });
+  }
 
   consultarPorCpf() {
-    console.log(this.formulario.value);
+
   }
 }
