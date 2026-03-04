@@ -1,3 +1,12 @@
-<button class="botao" [attr.type]="tipo()" [disabled]="desabilitado()">
-  {{ texto() }}
+<button
+  class="botao"
+  [class.processando]="processando()"
+  [attr.type]="tipo()"
+  [disabled]="desabilitado()"
+>
+  @if (processando()) {
+    <span class="processando"></span>
+  } @else {
+    {{ texto() }}
+  }
 </button>

@@ -15,8 +15,10 @@
     />
 
     <botao
+      class="btn-consultar-por-cpf"
       texto="Consultar por CPF"
       [desabilitado]="formulario.invalid"
+      [processando]="processando()"
       (click)="consultarPorCpf()"
     />
   </form>

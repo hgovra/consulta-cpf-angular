@@ -32,7 +32,7 @@ export class ConsultaCpf {
 
   mensagemCpf = signal<string | null>(null);
 
-  carregando = signal(false);
+  processando = signal(false);
   erroConsulta = signal<string | null>(null);
 
   atualizarMensagemCpf() {
@@ -48,13 +48,13 @@ export class ConsultaCpf {
   consultarPorCpf() {
     const cpf = this.formulario.value.cpf!;
 
-    this.carregando.set(true);
+    this.processando.set(true);
     this.erroConsulta.set(null);
 
     this.cpfService
       .buscarCpf(cpf)
       .pipe(
-        finalize(() => this.carregando.set(false))
+        finalize(() => this.processando.set(false))
       )
       .subscribe({
         next: cooperado => {
