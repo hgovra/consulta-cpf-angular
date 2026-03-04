@@ -23,12 +23,12 @@ describe('CpfService', () => {
 
     vi.advanceTimersByTime(1000);
 
-    const result = await promise;
+    const resultado = await promise;
 
-    expect(result).toBeTruthy();
-    expect(result?.cpf).toBe('83782513061');
-    expect(result?.nome).toBe('Mariane de Sousa Oliveira');
-    expect(result?.contas?.length).toBe(2);
+    expect(resultado).toBeTruthy();
+    expect(resultado?.cpf).toBe('83782513061');
+    expect(resultado?.nome).toBe('Mariane de Sousa Oliveira');
+    expect(resultado?.contas?.length).toBe(2);
 
     vi.useRealTimers();
   });
@@ -40,11 +40,11 @@ describe('CpfService', () => {
 
     vi.advanceTimersByTime(1000);
 
-    const result = await promise;
+    const resultado = await promise;
 
-    expect(result).toBeTruthy();
-    expect(result?.cpf).toBe('65470783022');
-    expect(result?.nome).toBe('João Silva Matos');
+    expect(resultado).toBeTruthy();
+    expect(resultado?.cpf).toBe('65470783022');
+    expect(resultado?.nome).toBe('João Silva Matos');
 
     vi.useRealTimers();
   });
