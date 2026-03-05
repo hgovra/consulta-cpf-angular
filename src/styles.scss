@@ -51,16 +51,3 @@ p {
   margin: 0.25rem 0;
   line-height: 1.15;
 }
-
-.botao-link {
-  color: var(--cor-primaria);
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.875rem;
-  margin: 0.75rem 0;
-
-  &:hover {
-    color: var(--cor-primaria-escura);
-  }
-}
