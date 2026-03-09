@@ -9,7 +9,7 @@ Projeto Angular que implementa uma tela de **consulta de CPF**,
 com validação, máscara de input, consulta simulada e exibição de dados
 de cooperado.
 
-Desenvolvido como teste prático para **Ailos** e **PremierSoft**.
+Desenvolvido como teste prático para **Ailos** e **Premiersoft**.
 
 # Stack
 
