@@ -24,6 +24,7 @@ Angular moderno com:
 Estilos:
 
 - SASS
+- Heroicons
 
 Testes:
 
